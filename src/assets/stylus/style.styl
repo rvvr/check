@@ -1,0 +1,79 @@
+@import url('https://fonts.googleapis.com/css?family=Raleway:300,400,700,800|Roboto:400,700');
+@import 'reset'
+// @import '../../node_modules/jeet/styl/index'
+
+Raleway = 'Raleway', sans-serif
+Roboto = 'Roboto', sans-serif
+
+yel = #FFEB3B
+red = #E74C3C
+
+body
+  font-family sans-serif
+  color #D5D8DC
+  background-color #2C3E50
+  font-family Roboto
+  line-height 1
+
+button
+  color inherit
+
+a
+  cursor pointer
+
+p
+  line-height 1.5
+
+.hide
+  display none
+
+.wrap
+  padding-left 1em
+  padding-right 1em
+  max-width 960px
+  margin 0 auto
+
+h1, h2
+  font-family Raleway
+
+main
+  position relative
+  overflow hidden
+  min-height calc(100vh - 200px)
+  padding-top 38px
+  padding-bottom 20px
+
+.loader
+  height 60px
+  width 60px
+  border-radius 60px
+  border 10px solid rgba(255,255,255, .1)
+  border-top-color rgba(255,255,255, .3)
+  animation spin 0.5s linear infinite
+  clear both
+  margin 0 auto
+
+@keyframes spin
+  0%
+    transform rotate(0deg)
+  100%
+    transform rotate(360deg)
+
+
+@import 'check'
+@import 'topbar'
+@import 'intro'
+@import 'filter'
+@import 'subscribe'
+@import 'daily'
+@import "movie"
+@import "movie_modal"
+@import "footer"
+@import 'modal'
+@import 'ui'
+
+@import '1920'
+@import '1280'
+@import '1024'
+@import '640'
+@import '480'

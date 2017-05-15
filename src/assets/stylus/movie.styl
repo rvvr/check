@@ -1,0 +1,116 @@
+.daily_movies
+  overflow hidden
+  clear both
+  margin-left -10px
+  margin-right -10px
+
+.movie
+  cursor pointer
+  width calc(50% - 20px)
+  float left
+  margin 0 10px 20px
+  background-color #34495E
+  padding 20px
+  border-radius 3px
+  box-shadow 0 3px 2px #273746
+  // transition transform .3s ease, box-shadow .3s ease
+  //
+  // &:hover
+  //   transform translateY(-5px)
+  //   box-shadow 0 8px 4px #273746
+
+
+.movie_title
+  padding-bottom 10px
+  color #fafcfc
+  font-size 18px
+  font-weight 700
+  white-space nowrap
+  text-overflow ellipsis
+  overflow hidden
+
+.movie_content
+  display flex
+
+.movie_poster
+  width 124px
+  height 184px
+  background-color #fff
+  border 2px solid #fff
+  box-shadow 0 0 5px #17202a
+
+.movie_poster_img
+  vertical-align top
+
+.movie_about
+  overflow hidden
+  width 100%
+
+.movie_desc
+  padding-left 20px
+  font-size 14px
+  width 100%
+
+  p
+    color #ABB2B9
+    height 4.5em
+    overflow hidden
+
+.movie_updates
+  display flex
+  flex-wrap wrap
+  padding 10px 20px
+  background-color #2c3e50
+  margin-top 20px
+
+.movie_update
+  flex-grow 1
+
+.update_title
+  color yel
+  font-size 12px
+  font-weight 700
+  text-transform uppercase
+  margin-bottom 10px
+
+.update_info
+  color  #eaecee
+  font-size 21px
+  font-weight 400
+
+.update_discount
+  background-color green
+  height 21px
+  line-height 21px
+  display inline-block
+  border-radius 2px
+  color #fff
+  font-size 18px
+  font-weight 400
+  vertical-align bottom
+  margin-left 10px
+  padding 0 5px
+
+.old_price
+  text-decoration line-through
+  color #e74c3c
+  display inline-block
+  margin-left 5px
+
+.movie_info
+  font-size 12px
+  font-weight 700
+  font-family Raleway
+  margin-top 15px
+  cursor pointer
+  display inline-block
+  height 30px
+  line-height 30px
+  background-color #2C3E50
+  padding 0 10px
+  border-radius 3px
+
+  &:hover
+    background-color #2C3E50 - 10%
+  &:active
+    background-color #2C3E50 - 20%
