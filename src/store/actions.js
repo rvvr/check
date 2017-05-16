@@ -1,5 +1,5 @@
 import axios from 'axios'
-axios.defaults.baseURL = 'https://films.checkapper.com'
+axios.defaults.baseURL = 'https://api.checkapper.com'
 
 export default {
   loadFilms(state) {
@@ -32,7 +32,7 @@ export default {
 
   loadFilm({commit}, id) {
     return new Promise( (resolve, reject) => {
-      axios.get('/films' + id)
+      axios.get('/films/' + id)
       .then(data=> {
         commit('film', data.data)
         resolve()
