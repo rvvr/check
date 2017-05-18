@@ -1,7 +1,12 @@
 import axios from 'axios'
-axios.defaults.baseURL = 'https://api.checkapper.com'
+axios.defaults.baseURL = 'https://app.checkapper.com/api'
 
 export default {
+  loadSettings({ commit }) {
+    axios.get('/settings')
+      .then(data => commit('settings', data.data))
+  },
+
   loadFilms(state) {
     return new Promise((resolve, reject) => {
       axios.get('/films', {
@@ -23,11 +28,6 @@ export default {
       commit('pagination', data.data.pagination)
       commit('busy', false)
     })
-  },
-
-  loadSettings({commit}) {
-    axios.get('/settings')
-    .then(data => commit('settings', data.data))
   },
 
   loadFilm({commit}, id) {
