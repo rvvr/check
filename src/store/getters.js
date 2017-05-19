@@ -42,6 +42,10 @@ export default {
 
   homeMetaTitle( {settings} ) {
     return settings.seo.main.title
-  }
+  },
+
+  homeMetaDesc( {settings} ) {
+    return settings.seo.main.description
+  },
 
 }

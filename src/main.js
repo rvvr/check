@@ -2,9 +2,13 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import VueResourse from 'vue-resource'
 import Vuex from 'vuex'
+import VueHead from 'vue-head'
 
 import {store} from './store/store.js'
 
+Vue.use(VueHead, {
+  separator: '',
+})
 Vue.use(VueRouter)
 Vue.use(VueResourse)
 

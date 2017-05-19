@@ -12,8 +12,19 @@ export default {
     store.dispatch('loadFilm', to.params.id).then(() => next())
   },
 
-  created() {
-    document.title = this.$store.getters.filmMetaTitle
+  head: {
+    title() {
+      return {
+        inner: this.$store.getters.filmMetaTitle.replace(
+          '${filmName}', this.$store.getters.film.name
+        )
+      }
+    },
+    meta() {
+      return [
+        { name: 'description', content: this.$store.getters.film.short_description }
+      ]
+    }
   },
 
   computed: {

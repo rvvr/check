@@ -2,6 +2,8 @@ import layout from '../layout/layout.vue'
 import intro from '../intro/intro.vue'
 import filters from '../filters/filters.vue'
 import updates from '../updates/updates.vue'
+import { store } from '../../store/store.js'
+
 
 export default {
   name: 'home',
@@ -10,9 +12,21 @@ export default {
     layout, intro, filters, updates
   },
 
-  created() {
-    this.$store.dispatch('loadFilms')
-    // this.$store.dispatch('loadSettings')
+  beforeRouteEnter(to, from, next) {
+    store.dispatch('loadFilms').then(() => next())
+  },
+
+  head: {
+    title() {
+      return {
+        inner: this.$store.getters.homeMetaTitle
+      }
+    },
+    meta() {
+      return [
+        { name: 'description', content: this.$store.getters.homeMetaDesc }
+      ]
+    }
   },
 
   computed: {
