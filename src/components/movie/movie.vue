@@ -3,8 +3,9 @@ transition(name="modal")
   .modal-mask
     .modal-wrapper(@click.self="close")
       .modal-container.movie_modal
-        .loader(v-if="loading")
-        template(v-if="!loading")
+        img(src="/public/img/close.svg" width="16" height="16" @click="close").modal-close
+        template
+          div(class="ya-share2" data-services="facebook,twitter" data-counter="")
           .movie_content
             .movie_poster_big
               img.movie_poster_img(:src="movie.poster_img_2x" v-bind:srcset="movie.poster_img_4x + ' 2x'" width="240" height="360")

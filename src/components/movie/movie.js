@@ -1,26 +1,19 @@
 import updates from '../updates/updates.vue'
+import { store } from '../../store/store.js'
 
 export default {
   name: 'movie',
-
-  data() {
-    return {
-      loading: false
-    }
-  },
-
-  props: ['id'],
 
   components: {
     updates
   },
 
+  beforeRouteEnter(to, from, next) {
+    store.dispatch('loadFilm', to.params.id).then(() => next())
+  },
+
   created() {
     document.title = this.$store.getters.filmMetaTitle
-    this.loading = true
-    this.$store.dispatch('loadFilm', this.$props.id).then(() => {
-      this.loading = false
-    })
   },
 
   computed: {
@@ -38,7 +31,6 @@ export default {
       return mins < 10 ? '0' + mins : mins
     },
     release() {
-      // return this.$store.getters.film.release_date ? this.$store.getters.film.release_date.slice(0, 4) : ''
       return this.$store.getters.film.release_date.slice(0, 4)
     }
   },
