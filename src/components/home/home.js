@@ -18,12 +18,12 @@ export default {
 
   head: {
     title() {
-      return {
+      if(this.$route.matched.length === 1) return {
         inner: this.$store.getters.homeMetaTitle
       }
     },
     meta() {
-      return [
+      if(this.$route.matched.length === 1) return [
         { name: 'description', content: this.$store.getters.homeMetaDesc }
       ]
     }
