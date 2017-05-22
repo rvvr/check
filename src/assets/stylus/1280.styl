@@ -1,14 +1,39 @@
-@media (max-width: 1281px) and (min-width: 1280px)
-  .wrap
-    margin 0 0 auto
+@media (max-width: 1279px)
+  .movies
+    width 100%
+    float none
+
+  .filter_trigger
+    display block
+
+  .filter
+    padding-left 35px
+    padding-right 35px
+    padding-bottom 75px
+    width 320px
+    padding-top 35px
+    height 100vh
+    background #2c3e50
+    overflow hidden
+    position fixed
+    right -320px
+    top 50px
+    box-shadow -2px 0px 2px #212f3d
+
+  .filter_open
+
+    .filter
+      right 0
 
   .filters
-    margin-left 950px
-    width 280px
+    position relative
 
-  .subscribe_form
-    position absolute
+  .options
+    border none
 
-  .subscribe_submit
-    position absolute
-    right 5px
+  .option_title
+    text-align left
+    background-color transparent
+
+  .option_items
+    padding 0

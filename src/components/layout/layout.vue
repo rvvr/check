@@ -1,13 +1,12 @@
 <template lang="jade">
-.wrapper
+.wrapper(:class="{filter_open: filter}")
   header
     .wrap
       .top_bar
-        a(href="/").logo checkupper.com
-        div(class="ya-share2" data-services="facebook,twitter" data-counter="")
-        button.filter_trigger#filter_trigger filters
-          img.trigger_img.funnel(src="/public/img/filter.svg" width="18px" height="18px")
-          img.trigger_img.cross(src="/public/img/close.svg" width="18px" height="16px")
+          a(href="/").logo checkupper.com
+          button.filter_trigger(@click="toggleSide")
+            img(v-if="!filter" src="/public/img/filter.svg" width="20" height="20")
+            img(v-if="filter" src="/public/img/close.svg" width="20" height="20")
   slot
   footer
     .wrap
@@ -19,7 +18,17 @@
 </template>
 
 <script>
-export default {
-  name: 'layout'
-}
+  export default {
+    name: 'layout',
+    data() {
+      return {
+        filter: false
+      }
+    },
+    methods: {
+      toggleSide() {
+        this.filter = !this.filter
+      }
+    }
+  }
 </script>

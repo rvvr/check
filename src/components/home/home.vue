@@ -2,9 +2,8 @@
 layout
   intro
   main#main
-    filters
-    .movies
-      .wrap
+    .wrap
+      .movies
         template(v-for="(film, index) in films")
           h2.daily_title(v-if="dateChanged[index]") Updates for {{ film.updated_at }}
           router-link.movie(:to="'/update/' + film.history_hash" tag="div")
@@ -17,8 +16,8 @@ layout
                   p {{ film.short_description }} ...
 
                 updates(:updates="film.changes")
-
         .loader(v-if="$store.getters.busy")
+      filters
   router-view
 </template>
 

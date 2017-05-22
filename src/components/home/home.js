@@ -79,18 +79,5 @@ export default {
     }
 
     document.addEventListener('scroll', doOnScroll)
-
-    // filter trigger
-    var filterTrigger = document.getElementById('filter_trigger')
-    var filter = document.getElementById('filter')
-    filterTrigger.addEventListener('click', function (e) {
-      if (filter.classList.contains('hide')) {
-        filter.classList.remove('hide')
-        filterTrigger.classList.add('open')
-      } else {
-        filter.classList.add('hide')
-        filterTrigger.classList.remove('open')
-      }
-    })
   },
 }

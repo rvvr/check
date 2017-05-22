@@ -20,7 +20,7 @@ export default {
     handleFilter(event) {
       let key = event.target.name
       let value = event.target.checked ? 1 : 0
-      if (window.scrollY) window.scrollTo(0, 120)
+      if (window.scrollY) window.scrollTo(0, 0)
       this.$store.commit('filter', {key, value})
       this.$store.dispatch('loadFilms')
       this.$router.push({query: this.$store.getters.activeFilters})
