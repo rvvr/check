@@ -28,7 +28,7 @@
     methods: {
       toggleSide() {
         this.filter = !this.filter
-        document.body.classList.toggle('fix')
+        document.body.classList.toggle('sidebar_fix')
       }
     }
   }

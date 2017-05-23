@@ -12,6 +12,10 @@ export default {
     store.dispatch('loadFilm', to.params.id).then(() => next())
   },
 
+  created() {
+    document.body.classList.add('modal_fix')
+  },
+
   head: {
     title() {
       return {
@@ -48,6 +52,7 @@ export default {
 
   methods: {
     close() {
+      document.body.classList.remove('modal_fix')
       if (~document.referrer.indexOf(window.location.hostname)) {
         this.$router.go(-1)
       } else {
