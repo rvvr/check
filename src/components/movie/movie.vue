@@ -19,7 +19,7 @@ transition(name="modal")
                 span {{ movie.country }}
                 span {{ movie.content_advisory_rating }}
               //- .movie_cast Cast: {{ movie.artist_name}}
-              updates(:updates="movie.changes")
+              //- updates(:updates="movie.changes")
               a.btn.yel_btn(:href="movie.view_url" target="_blank") Go to itunes
               p.long_description {{ movie.long_description }}
               share

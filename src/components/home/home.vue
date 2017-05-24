@@ -1,6 +1,6 @@
 <template lang="jade">
 layout
-  intro
+  //- intro
   main#main
     .wrap
       .movies
@@ -15,9 +15,9 @@ layout
                   h3.movie_title {{ film.name }}
                   p {{ film.short_description }} ...
 
-                updates(:updates="film.changes")
+                //- updates(:updates="film.changes")
         .loader(v-if="$store.getters.busy")
-      filters
+      //- filters
   router-view
 </template>
 
