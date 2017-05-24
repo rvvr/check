@@ -17,7 +17,7 @@ layout
 
                 //- updates(:updates="film.changes")
         .loader(v-if="$store.getters.busy")
-      //- filters
+      filters
   router-view
 </template>
 
