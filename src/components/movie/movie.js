@@ -4,37 +4,43 @@ import { store } from '../../store/store.js'
 export default {
   name: 'movie',
 
+  data() {
+    return {
+      movie: null
+    }
+  },
+
+  props: ['id'],
+
   components: {
     updates
   },
 
-  beforeRouteEnter(to, from, next) {
-    store.dispatch('loadFilm', to.params.id).then(() => next())
-  },
-
   created() {
     document.body.classList.add('modal_fix')
+    store.dispatch('loadFilm', this.$props.id).then(() => {
+      this.movie = this.$store.getters.film
+      this.$emit('updateHead')
+    })
   },
 
   head: {
     title() {
       return {
-        inner: this.$store.getters.filmMetaTitle.replace(
-          '${filmName}', this.$store.getters.film.name
-        )
+        inner: this.movie ? this.$store.getters.filmMetaTitle.replace('${filmName}', this.movie.name) : this.$store.getters.homeMetaTitle
       }
     },
     meta() {
       return [
-        { name: 'description', content: this.$store.getters.film.short_description }
+        {
+          name: 'description',
+          content: this.movie ? this.$store.getters.filmMetaDesc.replace('${filmName}', this.movie.name).replace('${filmDescription}', this.movie.short_description) : this.$store.getters.homeMetaDesc
+        }
       ]
     }
   },
 
   computed: {
-    movie() {
-      return this.$store.getters.film
-    },
     genre() {
       return this.$store.getters.genres[this.movie.genre_id]
     },
@@ -46,7 +52,7 @@ export default {
       return mins < 10 ? '0' + mins : mins
     },
     release() {
-      return this.$store.getters.film.release_date.slice(0, 4)
+      return this.movie.release_date.slice(0, 4)
     }
   },
 
