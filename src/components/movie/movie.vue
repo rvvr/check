@@ -9,7 +9,8 @@ transition(name="modal")
           .loader(v-if="!movie")
           template(v-if="movie")
             .movie_poster_big
-              img.movie_poster_img(:src="movie.poster_img_2x" v-bind:srcset="movie.poster_img_4x + ' 2x'" width="240" height="360")
+              img.movie_poster_img(:src="movie.poster_img_2x" v-bind:srcset="movie.poster_img_4x + ' 2x'" width="240" height="360" v-if="movie.poster_img_2x")
+              span(v-if="!movie.poster_img_2x") No Preview Available
             .movie_details
               h3.movie_title {{ movie.name }}
               .movie_information
