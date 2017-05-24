@@ -26,15 +26,18 @@ export default {
 
   head: {
     title() {
-      return {
-        inner: this.movie ? this.$store.getters.filmMetaTitle.replace('${filmName}', this.movie.name) : this.$store.getters.homeMetaTitle
+      if (this.movie) return {
+        inner: this.$store.getters.filmMetaTitle
+          .replace('${filmName}', this.movie.name)
       }
     },
     meta() {
-      return [
+      if (this.movie) return [
         {
           name: 'description',
-          content: this.movie ? this.$store.getters.filmMetaDesc.replace('${filmName}', this.movie.name).replace('${filmDescription}', this.movie.short_description) : this.$store.getters.homeMetaDesc
+          content: this.$store.getters.filmMetaDesc
+            .replace('${filmName}', this.movie.name)
+            .replace('${filmDescription}', this.movie.short_description)
         }
       ]
     }
