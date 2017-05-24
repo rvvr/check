@@ -22,5 +22,6 @@ transition(name="modal")
               updates(:updates="movie.changes")
               a.btn.yel_btn(:href="movie.view_url" target="_blank") Go to itunes
               p.long_description {{ movie.long_description }}
+              share
 </template>
 <script src="./movie.js"></script>

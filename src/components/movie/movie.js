@@ -1,4 +1,5 @@
 import updates from '../updates/updates.vue'
+import share from '../share/share.vue'
 import { store } from '../../store/store.js'
 
 export default {
@@ -13,7 +14,7 @@ export default {
   props: ['id'],
 
   components: {
-    updates
+    updates, share
   },
 
   created() {
