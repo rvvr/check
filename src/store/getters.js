@@ -40,6 +40,10 @@ export default {
     return settings.seo.film.title
   },
 
+  filmMetaDesc( {settings} ) {
+    return settings.seo.film.description
+  },
+
   homeMetaTitle( {settings} ) {
     return settings.seo.main.title
   },
