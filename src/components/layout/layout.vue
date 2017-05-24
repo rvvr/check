@@ -5,7 +5,7 @@
       .top_bar
           a(href="/").logo checkupper.com
           share
-          button.filter_trigger(@click="toggleSide")
+          //- button.filter_trigger(@click="toggleSide")
             img(v-if="!filter" src="/public/img/filter.svg" width="20" height="20")
             img(v-if="filter" src="/public/img/close.svg" width="20" height="20")
   slot
