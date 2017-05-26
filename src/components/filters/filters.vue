@@ -1,7 +1,7 @@
 <template lang="jade">
 .filter#filter
   .filters#filters
-    //- .filter_options
+    .filter_options
       .options_title Sales filtering
       .options
         .option_title HD version

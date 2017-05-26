@@ -57,8 +57,8 @@ export default {
 
   mounted() {
     var self = this,
-        // filters = document.getElementById('filters'),
-        // filtersPosition = filters.offsetTop,
+        filters = document.getElementById('filters'),
+        filtersPosition = filters.offsetTop,
         main = document.getElementById('main'),
         mainBottomPosition = main.offsetTop + main.offsetHeight
 
@@ -68,14 +68,14 @@ export default {
         self.loadNextPage()
       }
       // stick filter
-      // if (filters.getBoundingClientRect().top <= 20) {
-      //   filters.classList.add('fixed')
-      // } else {
-      //   filters.classList.remove('fixed')
-      // }
-      // if (window.pageYOffset < filtersPosition + 60) {
-      //   filters.classList.remove('fixed')
-      // }
+      if (filters.getBoundingClientRect().top <= 20) {
+        filters.classList.add('fixed')
+      } else {
+        filters.classList.remove('fixed')
+      }
+      if (window.pageYOffset < filtersPosition + 60) {
+        filters.classList.remove('fixed')
+      }
     }
 
     document.addEventListener('scroll', doOnScroll)
