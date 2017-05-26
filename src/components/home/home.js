@@ -16,6 +16,10 @@ export default {
     store.dispatch('loadFilms').then(() => next())
   },
 
+  created() {
+    if (this.$route.query.ct) localStorage.setItem('ct', this.$route.query.ct)
+  },
+
   head: {
     title() {
       if(this.$route.matched.length === 1) return {

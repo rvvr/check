@@ -1,5 +1,4 @@
 export default {
-
   film(state, film) {
     state.film = film
   },
@@ -27,5 +26,4 @@ export default {
   settings(state, data) {
     state.settings = data
   }
-
 }

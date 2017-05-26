@@ -30,9 +30,11 @@ export default {
     })
   },
 
-  loadFilm({commit}, id) {
+  loadFilm({ commit }, id) {
+    var url = id
+    if (localStorage.getItem('ct')) url += '?ct=' + localStorage.getItem('ct')
     return new Promise( (resolve, reject) => {
-      axios.get('/films/' + id)
+      axios.get('/films/' + url)
       .then(data=> {
         commit('film', data.data)
         resolve()

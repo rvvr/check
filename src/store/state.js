@@ -1,5 +1,5 @@
 export default {
-  film: [],
+  film: null,
   filters: {
     available_hd: 0,
     decreased_hd: 0,
@@ -12,6 +12,6 @@ export default {
   },
   busy: false,
   films: [],
-  pagination: [],
-  settings: []
+  pagination: {},
+  settings: {},
 }

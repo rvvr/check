@@ -18,23 +18,8 @@ export default {
   },
 
   created() {
-
-    var filmUrl = this.$props.id,
-        ct =  null
-
-    if (this.$route.query.ct) {
-      ct = this.$route.query.ct
-      localStorage.setItem('ct', this.$route.query.ct)
-    }
-
-    if (localStorage.getItem('ct')) {
-      ct = localStorage.getItem('ct')
-    }
-
-    if (ct) filmUrl += '?=' + ct
-
     document.body.classList.add('modal_fix')
-    store.dispatch('loadFilm', filmUrl).then(() => {
+    store.dispatch('loadFilm', this.$props.id).then(() => {
       this.movie = this.$store.getters.film
       this.$emit('updateHead')
     })
