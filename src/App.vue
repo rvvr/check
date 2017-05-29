@@ -5,9 +5,10 @@
   export default {
     name: 'app',
     created() {
-      this.$store.dispatch('loadSettings')
+      var q = window.location.search,
+          ct = q.slice(q.indexOf('ct=') + 3)
+      if (ct) localStorage.setItem('ct', ct)
     }
   }
 </script>
-
 <style src="./assets/stylus/style.styl" lang="stylus">
