@@ -9,7 +9,7 @@
             img(v-if="!filter" src="/public/img/filter.svg" width="20" height="20")
             img(v-if="filter" src="/public/img/close.svg" width="20" height="20")
   slot
-  footer
+  // footer
     .wrap
       span.copyright checkupper.com
       a.facebook

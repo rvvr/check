@@ -4,6 +4,7 @@ layout
   main#main
     .wrap
       .movies
+        .loader(v-if="!films.length")
         template(v-for="(film, index) in films")
           h2.daily_title(v-if="dateChanged[index]") Updates for {{ film.updated_at }}
           router-link.movie(:to="'/update/' + film.history_hash" tag="div")
