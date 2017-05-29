@@ -1,62 +1,62 @@
 import updates from '../updates/updates.vue'
 import share from '../share/share.vue'
-import { store } from '../../store/store.js'
 
 export default {
   name: 'movie',
-
-  data() {
-    return {
-      movie: null
-    }
-  },
-
   props: ['id'],
-
-  components: {
-    updates, share
-  },
+  components: {updates, share},
 
   created() {
+    this.$store.commit('film', {})
+    this.$store.dispatch('loadFilm', this.$props.id)
     document.body.classList.add('modal_fix')
-    store.dispatch('loadFilm', this.$props.id).then(() => {
-      this.movie = this.$store.getters.film
-      this.$emit('updateHead')
-    })
   },
 
-  head: {
-    title() {
-      if (this.movie) return {
-        inner: this.$store.getters.filmMetaTitle
-          .replace('${filmName}', this.movie.name)
+  metaInfo() {
+    if (this.movie.name) {
+      return {
+        title: this.$store.getters.filmMetaTitle,
+        meta: [
+          { name: 'description', content: this.$store.getters.filmMetaDesc },
+          { property: 'og:title', content: this.$store.getters.filmMetaTitle, },
+          { property: 'og:description', content: this.$store.getters.filmMetaDesc },
+          { property: 'og:type', content: 'video.movie' },
+          { property: 'og:url', content: document.location.href },
+          { property: 'og:site_name', content: 'CheckApper' },
+          { property: 'og:image', content: this.movie.poster_img_2x },
+          { property: 'og:video:actor', content: this.movie.artist_name },
+          { property: 'og:video:duration', content: this.secs },
+          { property: 'og:video:release_date', content: this.movie.release_date },
+          { property: 'og:video:tag', content: this.genre },
+        ]
       }
-    },
-    meta() {
-      if (this.movie) return [
-        {
-          name: 'description',
-          content: this.$store.getters.filmMetaDesc
-            .replace('${filmName}', this.movie.name)
-            .replace('${filmDescription}', this.movie.short_description)
-        }
-      ]
+    } else {
+      return {
+        title: '...'
+      }
     }
   },
 
   computed: {
+    movie() {
+      return this.$store.getters.film
+    },
     genre() {
-      return this.$store.getters.genres[this.movie.genre_id]
+      return this.$store.getters.genre
     },
     hours() {
       return this.movie.time_millis / 3600000 | 0
     },
+    secs() {
+      return this.movie.time_millis / 1000 | 0
+    },
     mins() {
-      var mins = (this.movie.time_millis / 1000) % 3600 / 60 | 0
+      let mins = (this.movie.time_millis / 1000) % 3600 / 60 | 0
       return mins < 10 ? '0' + mins : mins
     },
     release() {
-      return this.movie.release_date.slice(0, 4)
+      let release = this.movie.release_date || ''
+      return release.slice(0, 4)
     }
   },
 
@@ -68,7 +68,6 @@ export default {
       } else {
         this.$router.push('/')
       }
-      document.title = this.$store.getters.homeMetaTitle
     }
   }
 }

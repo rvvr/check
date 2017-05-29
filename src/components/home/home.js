@@ -4,36 +4,39 @@ import filters from '../filters/filters.vue'
 import updates from '../updates/updates.vue'
 import { store } from '../../store/store.js'
 
-
 export default {
   name: 'home',
-
-  components: {
-    layout, intro, filters, updates
-  },
+  components: { layout, intro, filters, updates },
 
   beforeRouteEnter(to, from, next) {
-    store.dispatch('loadFilms').then(() => next())
+    store.dispatch('loadSettings').then(() => next())
   },
 
   created() {
-    if (this.$route.query.ct) localStorage.setItem('ct', this.$route.query.ct)
+    this.$store.dispatch('loadFilms')
+    window.addEventListener('scroll', this.doOnScroll)
   },
 
-  head: {
-    title() {
-      if(this.$route.matched.length === 1) return {
-        inner: this.$store.getters.homeMetaTitle
-      }
-    },
-    meta() {
-      if(this.$route.matched.length === 1) return [
-        { name: 'description', content: this.$store.getters.homeMetaDesc }
+  destroyed() {
+    window.removeEventListener('scroll', this.doOnScroll)
+  },
+
+  metaInfo() {
+    if (this.$route.matched.length === 1) return {
+      title: this.$store.getters.homeMetaTitle,
+      meta: [
+        { name: 'description', content: this.$store.getters.homeMetaDesc },
+        { property: 'og:title', content: this.$store.getters.homeMetaTitle },
+        { property: 'og:description', content: this.$store.getters.homeMetaDesc },
+        { property: 'og:type', content: 'website' },
+        { property: 'og:url', content: document.location.href },
+        { property: 'og:site_name', content: 'CheckApper'},
       ]
     }
   },
 
   computed: {
+
     films() {
       return this.$store.getters.films
     },
@@ -56,32 +59,11 @@ export default {
       if ( !this.$store.getters.busy && this.$store.getters.nextPageExist ) {
         this.$store.dispatch('addFilms', this.$store.getters.nextPageUrl)
       }
-    }
-  },
-
-  mounted() {
-    var self = this,
-        filters = document.getElementById('filters'),
-        filtersPosition = filters.offsetTop,
-        main = document.getElementById('main'),
-        mainBottomPosition = main.offsetTop + main.offsetHeight
-
-    var doOnScroll = function() {
-      // infinite scroll
+    },
+    doOnScroll() {
       if (window.scrollY + window.innerHeight >= document.body.offsetHeight - window.innerHeight) {
-        self.loadNextPage()
-      }
-      // stick filter
-      if (filters.getBoundingClientRect().top <= 20) {
-        filters.classList.add('fixed')
-      } else {
-        filters.classList.remove('fixed')
-      }
-      if (window.pageYOffset < filtersPosition + 60) {
-        filters.classList.remove('fixed')
+        this.loadNextPage()
       }
     }
-
-    document.addEventListener('scroll', doOnScroll)
-  },
+  }
 }
