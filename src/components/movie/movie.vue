@@ -21,7 +21,8 @@ transition(name="modal")
                 span {{ movie.content_advisory_rating }}
               //- .movie_cast Cast: {{ movie.artist_name}}
               updates(:updates="movie.changes")
-              a.btn.yel_btn(:href="movie.view_url" target="_blank") Go to itunes
+              a(:href="movie.view_url" target="_blank")
+                img(src="/public/img/itunes-lrg.svg" width="110" height="40")
               p.long_description {{ movie.long_description }}
               share
 </template>
