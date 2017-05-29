@@ -28,28 +28,35 @@ export default {
     return activeFilters
   },
 
-  genres( {settings} ) {
-    return settings.films.genres
-  },
-
   film( {film} ) {
     return film
   },
 
-  filmMetaTitle( {settings} ) {
-    return settings.seo.film.title
+  // settings
+  genres({ settings }) {
+    return settings.films.genres
   },
 
-  filmMetaDesc( {settings} ) {
-    return settings.seo.film.description
+  genre({ settings, film }) {
+    return settings.films.genres[film.genre_id]
   },
 
-  homeMetaTitle( {settings} ) {
+  homeMetaTitle({ settings }) {
     return settings.seo.main.title
   },
-
+  
   homeMetaDesc( {settings} ) {
     return settings.seo.main.description
   },
 
+  filmMetaTitle({ settings, film }) {
+    return settings.seo.film.title
+      .replace('${filmName}', film.name)
+  },
+
+  filmMetaDesc({ settings, film }) {
+    return settings.seo.film.description
+      .replace('${filmName}', film.name)
+      .replace('${filmDescription}', film.short_description)
+  },
 }

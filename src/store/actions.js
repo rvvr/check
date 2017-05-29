@@ -3,43 +3,38 @@ axios.defaults.baseURL = 'https://app.checkapper.com/api'
 
 export default {
   loadSettings({ commit }) {
-    axios.get('/settings')
-      .then(data => commit('settings', data.data))
+    return new Promise(resolve => {
+      axios.get('/settings')
+        .then(({ data }) => {
+          commit('settings', data)
+          resolve()
+        })
+    })
   },
 
-  loadFilms(state) {
-    return new Promise((resolve, reject) => {
-      axios.get('/films', {
-        params: state.getters.filters
-      })
-      .then( data => {
-        state.commit('films', data.data.data)
-        state.commit('pagination', data.data.pagination)
-        resolve()
-      })
+  loadFilms({ commit, getters }) {
+    axios.get('/films', {
+      params: getters.filters
+    })
+    .then( ({data}) => {
+      commit('films', data.data)
+      commit('pagination', data.pagination)
     })
   },
 
   addFilms({commit}, url) {
     commit('busy', true)
     axios.get(url)
-    .then( data => {
-      commit('addFilms', data.data.data)
-      commit('pagination', data.data.pagination)
+    .then( ({data}) => {
+      commit('addFilms', data.data)
+      commit('pagination', data.pagination)
       commit('busy', false)
     })
   },
 
   loadFilm({ commit }, id) {
-    var url = id
-    if (localStorage.getItem('ct')) url += '?ct=' + localStorage.getItem('ct')
-    return new Promise( (resolve, reject) => {
-      axios.get('/films/' + url)
-      .then(data=> {
-        commit('film', data.data)
-        resolve()
-      })
-    })
+    if (localStorage.getItem('ct')) id += '?ct=' + localStorage.getItem('ct')
+    axios.get('/films/' + id)
+    .then( ({data}) => commit('film', data) )
   }
-
 }

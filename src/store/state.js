@@ -1,5 +1,5 @@
 export default {
-  film: null,
+  film: {},
   filters: {
     available_hd: 0,
     decreased_hd: 0,
