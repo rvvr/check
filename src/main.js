@@ -1,16 +1,12 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import VueResourse from 'vue-resource'
+import Meta from 'vue-meta'
 import Vuex from 'vuex'
-import VueHead from 'vue-head'
 
 import {store} from './store/store.js'
 
-Vue.use(VueHead, {
-  separator: '',
-})
 Vue.use(VueRouter)
-Vue.use(VueResourse)
+Vue.use(Meta)
 
 import App from './App.vue'
 import Home from './components/home/home.vue'
