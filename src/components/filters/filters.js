@@ -6,14 +6,9 @@ export default {
   components: {subscribe},
 
   computed: {
-    available_hd() { return this.$store.getters.filters['available_hd'] },
-    decreased_hd() { return this.$store.getters.filters['decreased_hd'] },
-    available_hd_rent() { return this.$store.getters.filters['available_hd_rent'] },
-    decreased_hd_rent() { return this.$store.getters.filters['decreased_hd_rent'] },
-    available_sd() { return this.$store.getters.filters['available_sd'] },
-    decreased_sd() { return this.$store.getters.filters['decreased_sd'] },
-    available_sd_rent() { return this.$store.getters.filters['available_sd_rent'] },
-    decreased_sd_rent() { return this.$store.getters.filters['decreased_sd_rent'] },
+    filters() {
+      return this.$store.getters.filters
+    }
   },
 
   methods: {
