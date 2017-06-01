@@ -5,7 +5,7 @@
       .options_title Sales filtering
       .options
         select.genre_select(v-model="filters.genre_id" name="genre_id" @change="handleSelectFilter")
-          option(selected disabled hide) Choose genre
+          option(value="0") All genres
           template(v-for="(item, index) in genres")
             option(:value="index") {{item}}
       .options
