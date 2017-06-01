@@ -8,13 +8,25 @@ export default {
   computed: {
     filters() {
       return this.$store.getters.filters
+    },
+    genres() {
+      return this.$store.getters.genres
     }
   },
 
   methods: {
-    handleFilter(event) {
+    handleSelectFilter(event) {
+      let key = event.target.name
+      let value = event.target.value
+      console.log(key, value)
+      this.handleFilter(key, value)
+    },
+    handleCheckFilter(event) {
       let key = event.target.name
       let value = event.target.checked ? 1 : 0
+      this.handleFilter(key, value)
+    },
+    handleFilter(key, value) {
       if (window.scrollY) window.scrollTo(0, 0)
       this.$store.commit('filter', {key, value})
       this.$store.commit('films', [])
@@ -29,7 +41,7 @@ export default {
           query = this.$route.query
       for (var filter in query) {
         if (filter in filters) {
-          this.$store.commit('filter', {key: filter, value: query[filter]})
+          this.$store.commit('filter', { key: filter, value: query[filter] })
         }
       }
     }

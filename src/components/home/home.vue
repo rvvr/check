@@ -4,7 +4,9 @@ layout
   main#main
     .wrap
       .movies
-        .loader(v-if="!films.length")
+        template(v-if="!loading && !films.length")
+          h2.daily_title No movies found :(
+        .loader(v-if="!films.length && loading")
         template(v-for="(film, index) in films")
           h2.daily_title(v-if="dateChanged[index]") Updates for {{ film.updated_at }}
           router-link.movie(:to="'/update/' + film.history_hash" tag="div")
@@ -17,7 +19,7 @@ layout
                   h3.movie_title {{ film.name }}
                   p {{ film.short_description }} ...
                 updates(:updates="film.changes")
-        .loader(v-if="$store.getters.busy")
+        .loader(v-if="loading && films.length")
       filters
   router-view
 </template>

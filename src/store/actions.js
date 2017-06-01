@@ -13,12 +13,14 @@ export default {
   },
 
   loadFilms({ commit, getters }) {
+    commit('busy', true)
     axios.get('/films', {
-      params: getters.filters
+      params: getters.activeFilters
     })
     .then( ({data}) => {
       commit('films', data.data)
       commit('pagination', data.pagination)
+      commit('busy', false)
     })
   },
 

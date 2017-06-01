@@ -23,7 +23,7 @@ export default {
   activeFilters( {filters} ) {
     let activeFilters = {}
     for (var filter in filters) {
-      if (filters[filter] === 1) activeFilters[filter] = 1
+      if (filters[filter] != 0) activeFilters[filter] = filters[filter]
     }
     return activeFilters
   },
@@ -44,7 +44,7 @@ export default {
   homeMetaTitle({ settings }) {
     return settings.seo.main.title
   },
-  
+
   homeMetaDesc( {settings} ) {
     return settings.seo.main.description
   },

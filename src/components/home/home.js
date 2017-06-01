@@ -36,7 +36,9 @@ export default {
   },
 
   computed: {
-
+    loading() {
+      return this.$store.getters.busy
+    },
     films() {
       return this.$store.getters.films
     },
