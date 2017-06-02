@@ -6,7 +6,7 @@
           button.filter_trigger(@click="toggleSide")
             img(v-if="!filter" src="/public/img/filter.svg" width="20" height="20")
             img(v-if="filter" src="/public/img/close.svg" width="20" height="20")
-          a(href="/").logo checkupper.com
+          router-link.logo(:to="'/'") checkupper.com
           share
   slot
   // footer
@@ -24,6 +24,9 @@
   export default {
     name: 'layout',
     components: {share},
+    created() {
+      window.scrollTo(0, 0);
+    },
     data() {
       return {
         filter: false

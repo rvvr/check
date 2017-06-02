@@ -47,7 +47,9 @@
             label(for="decreased_sd_rent")
               span Decreased a price for rent
     subscribe
-    p.copy © 2017. CheckApper. All rights reserved. Apple, App Store, and iPhone are trademarks of Apple, Inc.
+    p.copy © 2017. CheckApper. All rights reserved. Apple, App Store, and iPhone are trademarks of Apple, Inc. 
+      br
+      router-link(:to="'/policy'") Privacy Policy
 </template>
 
 <script src="./filters.js">

@@ -11,6 +11,7 @@ Vue.use(Meta)
 import App from './App.vue'
 import Home from './components/home/home.vue'
 import Movie from './components/movie/movie.vue'
+import Policy from './components/policy/policy.vue'
 
 var router = new VueRouter({
   mode: 'history',
@@ -20,7 +21,8 @@ var router = new VueRouter({
       children: [
         {path: 'update/:id', component: Movie, name: 'movie', props: true}
       ]
-    }
+    },
+      {path: '/policy', component: Policy, name: 'policy'}
   ]
 })
 
