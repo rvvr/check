@@ -1,12 +1,14 @@
 var path = require('path')
 var webpack = require('webpack')
+var fs = require('fs')
+var Path = require("path")
 
 module.exports = {
   entry: './src/main.js',
   output: {
     path: path.resolve(__dirname, './dist'),
     publicPath: '/dist/',
-    filename: 'build.js'
+    filename: 'build.[hash].js'
   },
   module: {
     rules: [
@@ -65,6 +67,26 @@ if (process.env.NODE_ENV === 'production') {
     }),
     new webpack.LoaderOptionsPlugin({
       minimize: true
-    })
+    }),
+
+    function () {
+      this.plugin("done", function (statsData) {
+        var stats = statsData.toJson();
+
+        if (!stats.errors.length) {
+          var htmlFileName = "index.html";
+          var html = fs.readFileSync(Path.join(__dirname, htmlFileName), "utf8");
+
+          var htmlOutput = html.replace(
+            /<script\s+src=(["'])(.+?)build\.js\1/i,
+            "<script src=$1$2" + stats.assetsByChunkName.main[0] + "$1");
+
+          fs.writeFileSync(
+            Path.join(__dirname, "build.html"),
+            htmlOutput);
+        }
+      });
+    }    
+
   ])
 }
