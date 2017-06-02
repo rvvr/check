@@ -10,16 +10,20 @@ div.share
 <script>
 export default {
   name: 'share',
+  computed: {
+    shareUrl() {
+      return window.location.protocol + '//app.' + window.location.host + window.location.pathname + window.location.search
+    }
+  },
   methods: {
     fbUrl() {
-      window.open('https://facebook.com/sharer/sharer.php?u='+document.location.href, '_blank')
+      window.open('https://facebook.com/sharer/sharer.php?u='+this.shareUrl, '_blank')
     },
     twUrl() {
-      window.open('https://twitter.com/intent/tweet/?text='+document.title+'&url='+document.location.href, '_blank')
+      window.open('https://twitter.com/intent/tweet/?text='+document.title+'&url='+this.shareUrl, '_blank')
     }
   }
 }
 </script>
-
 <style lang="css">
 </style>
