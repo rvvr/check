@@ -23,14 +23,15 @@
     height 100vh
     background #2c3e50
     position fixed
-    right -320px
+    left -320px
     top 50px
-    box-shadow -2px 0px 2px #212f3d
+    box-shadow 2px 0px 2px #212f3d
+    transition transform .2s ease
 
   .filter_open
 
     .filter
-      right 0
+      transform translateX(320px)
 
   .filters
     position relative
