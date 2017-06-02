@@ -63,18 +63,7 @@ export default {
   methods: {
     close() {
       document.body.classList.remove('modal_fix')
-      console.log(
-        document.referrer,
-        window.location.hostname,
-        ~document.referrer.indexOf(window.location.hostname)
-      )
-      if (~document.referrer.indexOf(window.location.hostname)) {
-        this.$router.go(-1)
-        console.log('back')
-      } else {
-        console.log('to main')
-        this.$router.push('/')
-      }
+      this.$router.push({path: '/', query: this.$store.getters.activeFilters})
     }
   }
 }
