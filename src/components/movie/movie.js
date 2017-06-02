@@ -63,6 +63,11 @@ export default {
   methods: {
     close() {
       document.body.classList.remove('modal_fix')
+      console.log(
+        document.referrer,
+        window.location.hostname,
+        ~document.referrer.indexOf(window.location.hostname)
+      )
       if (~document.referrer.indexOf(window.location.hostname)) {
         this.$router.go(-1)
       } else {
