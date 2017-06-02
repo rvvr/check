@@ -70,7 +70,9 @@ export default {
       )
       if (~document.referrer.indexOf(window.location.hostname)) {
         this.$router.go(-1)
+        console.log('back')
       } else {
+        console.log('to main')
         this.$router.push('/')
       }
     }
