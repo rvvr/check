@@ -1,10 +1,12 @@
 import updates from '../updates/updates.vue'
 import share from '../share/share.vue'
+import VueDPlayer from 'vue-dplayer'
+
 
 export default {
   name: 'movie',
   props: ['id'],
-  components: {updates, share},
+  components: { updates, share, 'd-player': VueDPlayer },
 
   created() {
     this.$store.commit('film', {})
@@ -40,6 +42,11 @@ export default {
   computed: {
     movie() {
       return this.$store.getters.film
+    },
+    video() {
+      return {
+        url: this.movie.preview_url,
+      }
     },
     genre() {
       return this.$store.getters.genre
