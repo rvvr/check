@@ -8,9 +8,25 @@ transition(name="modal")
             img(src="/public/img/close.svg" width="16" height="16" @click="close")
           .loader(v-if="!movie.name")
           template(v-if="movie.name")
-            .movie_poster_big
-              img.movie_poster_img(:src="movie.poster_img_2x" v-bind:srcset="movie.poster_img_4x + ' 2x'" width="240" height="360" v-if="movie.poster_img_2x")
-              span(v-if="!movie.poster_img_2x") No Preview Available
+            .movie_main
+              .movie_poster_big
+                img.movie_poster_img(:src="movie.poster_img_2x" v-bind:srcset="movie.poster_img_4x + ' 2x'" width="240" height="360" v-if="movie.poster_img_2x")
+                span(v-if="!movie.poster_img_2x") No Preview Available
+              .movie_all_prices
+                table.movie_all_prices_table
+                  tr
+                    td.update_title Buy HD 
+                    td ${{movie.prices.hd}}
+                  tr
+                    td.update_title Buy SD
+                    td ${{movie.prices.sd}}
+                  tr
+                    td.update_title Rent HD
+                    td ${{movie.prices.hd_rent}}
+                  tr
+                    td.update_title Rent SD
+                    td ${{movie.prices.sd_rent}}
+
             .movie_details
               h3.movie_title {{ movie.name }}
               .movie_information
