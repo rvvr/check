@@ -17,13 +17,11 @@ transition(name="modal")
                   tr
                     td.update_title Buy HD 
                     td ${{movie.prices.hd}}
-                  tr
                     td.update_title Buy SD
                     td ${{movie.prices.sd}}
                   tr
                     td.update_title Rent HD
                     td ${{movie.prices.hd_rent}}
-                  tr
                     td.update_title Rent SD
                     td ${{movie.prices.sd_rent}}
 
