@@ -16,14 +16,14 @@ transition(name="modal")
                 table.movie_all_prices_table
                   tr
                     td.update_title Buy HD 
-                    td ${{movie.prices.hd}}
+                    td {{movie.prices.hd ? '$ ' + movie.prices.hd : '-'}}
                     td.update_title Buy SD
-                    td ${{movie.prices.sd}}
+                    td {{movie.prices.sd ? '$ ' + movie.prices.sd : '-'}}
                   tr
                     td.update_title Rent HD
-                    td ${{movie.prices.hd_rent}}
+                    td {{movie.prices.hd_rent ? '$ ' + movie.prices.hd_rent : '-'}}
                     td.update_title Rent SD
-                    td ${{movie.prices.sd_rent}}
+                    td {{movie.prices.sd_rent ? '$ ' + movie.prices.sd_rent : '-'}}
 
             .movie_details
               h3.movie_title {{ movie.name }}
