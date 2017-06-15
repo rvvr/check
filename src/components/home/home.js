@@ -1,12 +1,11 @@
 import layout from '../layout/layout.vue'
-import intro from '../intro/intro.vue'
 import filters from '../filters/filters.vue'
 import updates from '../updates/updates.vue'
 import { store } from '../../store/store.js'
 
 export default {
   name: 'home',
-  components: { layout, intro, filters, updates },
+  components: { layout, filters, updates },
 
   beforeRouteEnter(to, from, next) {
     store.dispatch('loadSettings').then(() => next())

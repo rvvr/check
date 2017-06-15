@@ -1,6 +1,5 @@
 <template lang="jade">
 layout
-  intro
   main#main
     .wrap
       .movies
