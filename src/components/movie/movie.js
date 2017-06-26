@@ -1,12 +1,13 @@
 import updates from '../updates/updates.vue'
 import share from '../share/share.vue'
+import reviews from '../reviews/reviews.vue'
 import VueDPlayer from 'vue-dplayer'
 
 
 export default {
   name: 'movie',
   props: ['id'],
-  components: { updates, share, 'd-player': VueDPlayer },
+  components: { reviews, updates, share, 'd-player': VueDPlayer },
 
   created() {
     this.$store.commit('film', {})

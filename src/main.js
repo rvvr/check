@@ -2,11 +2,13 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Meta from 'vue-meta'
 import Vuex from 'vuex'
+import AsyncComputed from 'vue-async-computed'
 
 import {store} from './store/store.js'
 
 Vue.use(VueRouter)
 Vue.use(Meta)
+Vue.use(AsyncComputed)
 
 import App from './App.vue'
 import Home from './components/home/home.vue'
