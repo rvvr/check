@@ -37,7 +37,7 @@ transition(name="modal")
               updates(:updates="movie.changes")
               a(:href="movie.view_url" target="_blank")
                 img(src="/public/img/itunes-lrg.svg" width="110" height="40")
-              .trailer
+              // .trailer
                 d-player(:video="video" lang="en")
               p.long_description {{ movie.long_description }}
           reviews(:id="movie.track_id")
